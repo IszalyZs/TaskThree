@@ -4,15 +4,14 @@ import java.io.*;
 import java.util.Map;
 
 public class Phonebook {
+
     public void exportPhonebook(Map<String, String> contacts, String output) {
-
-        if (output == null || contacts == null)
-            try {
-                throw new IllegalAccessException();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-
+        try {
+            if (output == null || contacts == null)
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
         File file = new File(output);
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
